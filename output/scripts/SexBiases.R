@@ -36,6 +36,15 @@ data = subset(rawData, filterConstraint)
 women = subset(data, data$sex == 2)
 men = subset(data, data$sex == 1)
 
+# intelligence groups
+women$igr = 0
+women$igr = ifelse (women$relIQ > 3, +1, women$igr)
+women$igr = ifelse (women$relIQ < 3, -1, women$igr)
+
+men$igr = 0
+men$igr = ifelse (men$relIQ > 3, +1, men$igr)
+men$igr = ifelse (men$relIQ < 3, -1, men$igr)
+
 
 hist(data$relIQ)
 hist(women$relIQ)
@@ -63,6 +72,15 @@ aboveAvgIntelligentMen =   c(length(subset(men$relIQ, men$relIQ < 3)),
 aboveAvgIntelligentMen = aboveAvgIntelligentMen / sum(aboveAvgIntelligentMen)
 
 
+# table = table(aboveAvgIntelligentMen, aboveAvgIntelligentWomen)
+# table = table(subset, women$igr)
+# head(table)
+# chisq.test(table)
+# w_b = dim(women[women$igr==-1,])[1]
+# w_a = dim(women[women$igr!=-1,])[1] - w_b
+# m_b = dim(men[men$igr==-1,])[1]
+# m_a = dim(men[men$igr!=-1,])[1] - m_b
+# table(x = c(1, 2, 3, 4, 5, 6), y = c(10:15))
 
 
 # meanRelIQ = majority(data$relIQ)
