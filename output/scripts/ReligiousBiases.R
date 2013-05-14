@@ -1,9 +1,15 @@
 # clean
-rm(list=ls())
+rm(list= ls()[!(ls() %in% PERSISTENT_CONSTANTS)])
+
+
+# constants
+WD = getwd()
+PERSISTENT_CONSTANTS = c("WD", "PERSISTENT_CONSTANTS")
+
 
 setWD = tryCatch({
   # set working directory
-  setwd(paste(getwd(), "/output", sep=""))
+  setwd(paste(WD, "/output", sep=""))
 }, error = function(e) {})
 
 # load data
