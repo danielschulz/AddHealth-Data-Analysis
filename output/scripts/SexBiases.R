@@ -14,6 +14,11 @@ relativeAddHealthPath = "../input/data/addhealth_pds3.RData"
 load(relativeAddHealthPath)
 
 
+# constants
+yNames = c("below average", "about average", "above average")
+yLimit = c(0, 0.7)
+
+
 # get 95% ranges
 majority = function (list)
   c(1, 6)
@@ -23,9 +28,12 @@ majority = function (list)
 rawData = addhealth_pds[c("aid", "bio_sex", "h1se4")]
 names(rawData) = c("id", "sex", "relIQ")
 
-rawData$id <- as.numeric(rawData$id)
-rawData$relIQ <- as.numeric(rawData$relIQ)
-rawData$sex <- as.numeric(rawData$sex)
+rawData$id = as.numeric(rawData$id)
+rawData$relIQ = as.numeric(rawData$relIQ)
+rawData$sex = as.numeric(rawData$sex)
+rawData$sexgr = as.factor(NA)
+rawData$sexgr = ifelse (rawData$sex == 2, "female", rawData$sexgr)
+rawData$sexgr = ifelse (rawData$sex == 1, "male", rawData$sexgr)
 
 
 
@@ -37,6 +45,11 @@ women = subset(data, data$sex == 2)
 men = subset(data, data$sex == 1)
 
 # intelligence groups
+data$igr = "avg"
+data$igr = ifelse (data$relIQ > 3, "above", data$igr)
+data$igr = ifelse (data$relIQ < 3, "below", data$igr)
+data$igr = as.factor(data$igr)
+
 women$igr = 0
 women$igr = ifelse (women$relIQ > 3, +1, women$igr)
 women$igr = ifelse (women$relIQ < 3, -1, women$igr)
@@ -83,7 +96,16 @@ aboveAvgIntelligentMen = aboveAvgIntelligentMen / sum(aboveAvgIntelligentMen)
 # table(x = c(1, 2, 3, 4, 5, 6), y = c(10:15))
 
 
+table = table(data$igr, data$sexgr)
+chisq.test(table)
+# barplot(aboveAvgIntelligentPop, xlab="Opinion on oneself", ylab="Y",main="Title", sub="sub", names.arg=c("a", "B", "c"), ylim=c(0, 0.7))
 # meanRelIQ = majority(data$relIQ)
 #
+
+barplot(aboveAvgIntelligentPop, 
+        xlab="Opinion on oneself", ylab="frequency derived from population", 
+        main="Population's opinion on theirselve's intelligence", 
+        sub="The population's opinion on theirselve's IQ is the weighted average between the women's and men's measurements. Theirfore these bars are about 'inbetween' the two.", 
+        names.arg=yNames, ylim=yLimit, border=NA)
 
 # process
