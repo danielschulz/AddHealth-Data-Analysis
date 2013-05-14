@@ -24,6 +24,7 @@ majority = function (list)
   c(1, 6)
 
 
+
 # make subsets
 rawData = addhealth_pds[c("aid", "bio_sex", "h1se4")]
 names(rawData) = c("id", "sex", "relIQ")
@@ -102,10 +103,28 @@ chisq.test(table)
 # meanRelIQ = majority(data$relIQ)
 #
 
-barplot(aboveAvgIntelligentPop, 
-        xlab="Opinion on oneself", ylab="frequency derived from population", 
-        main="Population's opinion on theirselve's intelligence", 
-        sub="The population's opinion on theirselve's IQ is the weighted average between the women's and men's measurements. Theirfore these bars are about 'inbetween' the two.", 
-        names.arg=yNames, ylim=yLimit, border=NA)
 
+# make plots
+makePlots = function () {
+  barplot(aboveAvgIntelligentPop, 
+          xlab="Opinion on oneself", ylab="frequency derived from population", 
+          main="Population's opinion on theirselve's intelligence", 
+          sub="The population's opinion on theirselve's IQ is the weighted average between the women's and men's measurements. Theirfore these bars are about 'inbetween' the two.", 
+          names.arg=yNames, ylim=yLimit, border=NA)
+  
+  boxplot(women$relIQ, men$relIQ, 
+          main = "Female vs. male self-assessment of their own intelligence", 
+          names=c("Women", "Men"), 
+          xlab = "", ylab ="Their own intelligence rating: one to six", 
+          sub = "The difference is hardly visible. The scale is [1, 6] with 3 meaning about average. So 1 and 2 is below and 4 thru 6 is above the average. Women and men seem not to differ when it comes to their own intelligence compared to others.")
+  boxplot(women$igr, men$igr, 
+          main = "Female vs. male self-assessment of their own intelligence", 
+          names=c("Women", "Men"), 
+          xlab = "", ylab ="Their own intelligence rating: minus one to plus one", 
+          sub = "The difference is hardly visible. The scale is [-1, +1] with zero meaning about average. So minus one is below and plus one is above the average. Women and men seem not to differ when it comes to their own intelligence compared to others.")
+  
+}
+
+
+# makePlots()
 # process
