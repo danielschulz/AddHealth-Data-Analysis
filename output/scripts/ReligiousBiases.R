@@ -70,6 +70,9 @@ other = subset(data, OTHER_RELIGION_KEEPER(data))
 # eval
 # lm = lm(data$attendedServices ~ data$religion + data$attendedYouthActivities + data$prayingFreq + data$figuresAreSacre)
 # summary(lm)
+aov = aov(data$attendedServices ~ data$attendedYouthActivities + data$prayingFreq + data$impOfReligion + data$figuresAreSacre + data$bornAgain)
+summary(aov)
+
 
 
 
@@ -82,8 +85,9 @@ dontknows$MORE_THAN_ONE_UNCLEAR = ifelse (dontknows$dontknowing > 1, TRUE, dontk
 dontknows$CHRISTIAN = "other"
 dontknows$CHRISTIAN = ifelse (CHRISTIAN_RELIGION_KEEPER(dontknows), "christians", dontknows$CHRISTIAN)
 
-table = table(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$CHRISTIAN)
+table = table("didn´t knew 40%+"=dontknows$MORE_THAN_ONE_UNCLEAR, "religious Group"=dontknows$CHRISTIAN)
 table
+
 chisq.test(table)
 #
 
