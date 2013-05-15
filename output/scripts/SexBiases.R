@@ -9,6 +9,11 @@ rm(list= ls()[!(ls() %in% PERSISTENT_CONSTANTS)])
 WD = getwd()
 PERSISTENT_CONSTANTS = c("WD", "PERSISTENT_CONSTANTS")
 
+yNames = c("below average", "about average", "above average")
+yLimit = c(0, 0.7)
+
+
+
 
 setWD = tryCatch({
   # set working directory
@@ -18,18 +23,6 @@ setWD = tryCatch({
 # load data
 relativeAddHealthPath = "../input/data/addhealth_pds3.RData"
 load(relativeAddHealthPath)
-
-
-
-# constants
-yNames = c("below average", "about average", "above average")
-yLimit = c(0, 0.7)
-
-
-# get 95% ranges
-majority = function (list)
-  c(1, 6)
-
 
 
 # make subsets
