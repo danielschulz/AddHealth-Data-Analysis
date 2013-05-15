@@ -23,6 +23,7 @@ load(relativeAddHealthPath)
 rawData = addhealth_pds[c("h1re1", "h1re2", "h1re3", "h1re4", "h1re5", "h1re6", "h1re7", "h1gi6a", "h1gi6b", "h1gi6c", "h1gi6d")]
 names(rawData) = c("religion", "figuresAreSacre", "attendedServices", "impOfReligion", "bornAgain", "prayingFreq", 
                    "attendedYouthActivities", "white", "african", "native", "pacific")
+rm(list=c("addhealth_pds", "relativeAddHealthPath", "WD", "setWD"))
 
 # dont-know-count
 rawData$dontknowing = 0
@@ -67,12 +68,14 @@ other = subset(data, OTHER_RELIGION_KEEPER(data))
 
 
 # eval
-lm = lm(data$attendedServices ~ data$religion + data$attendedYouthActivities + data$prayingFreq + data$figuresAreSacre)
-summary(lm)
+# lm = lm(data$attendedServices ~ data$religion + data$attendedYouthActivities + data$prayingFreq + data$figuresAreSacre)
+# summary(lm)
 
 
 
 dontknows = subset(rawData, rawData$dontknowing > 0 & RELIGIONS_KEEPER)
+rm(list=c("rawData"))
+
 dontknows$MORE_THAN_ONE_UNCLEAR = FALSE
 dontknows$MORE_THAN_ONE_UNCLEAR = ifelse (dontknows$dontknowing > 1, TRUE, dontknows$MORE_THAN_ONE_UNCLEAR)
 
