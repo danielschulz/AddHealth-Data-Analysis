@@ -1,0 +1,220 @@
+1                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+1          ;*';*";*/;quit;run;
+2          OPTIONS PAGENO=MIN;
+3          %LET _CLIENTTASKLABEL='Assignment3';
+4          %LET _CLIENTPROJECTPATH='D:\My Documents\Documents\PDS_AddHealth_Prj.egp';
+5          %LET _CLIENTPROJECTNAME='PDS_AddHealth_Prj.egp';
+6          %LET _SASPROGRAMFILE=;
+7          
+8          ODS _ALL_ CLOSE;
+9          OPTIONS DEV=ACTIVEX;
+10         GOPTIONS XPIXELS=0 YPIXELS=0;
+11         FILENAME EGSR TEMP;
+12         ODS tagsets.sasreport12(ID=EGSR) FILE=EGSR STYLE=Analysis
+12       ! STYLESHEET=(URL="file:///C:/Program%20Files%20(x86)/SAS/EnterpriseGuideAcademics/4.3/Styles/Analysis.css") NOGTITLE
+12       ! NOGFOOTNOTE GPATH=&sasworklocation ENCODING=UTF8 options(rolap="on");
+NOTE: Writing TAGSETS.SASREPORT12(EGSR) Body file: EGSR
+13         
+14         GOPTIONS ACCESSIBLE;
+15         libname mydata "/courses/u_coursera.org1/i_1006328/c_5333" access=readonly;
+NOTE: Libref MYDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /courses/u_coursera.org1/i_1006328/c_5333
+16         
+17         
+18         /* INTELLIGENCE FOR WOMEN */
+19         DATA new; set mydata.addhealth_pds;
+NOTE: Data file MYDATA.ADDHEALTH_PDS.DATA is in a format that is native to another host, or the file encoding does not match the 
+      session encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+20         
+21         LABEL 	h1se4 = "Intelligence distribution among women";
+22         
+23         /* ignore: */
+24         /* unknown sex (6) and male (1) */
+25         IF BIO_SEX EQ 2;
+26         /* intelligence refused (96) and unknown (98) data */
+27         IF h1se4 EQ 98 OR h1se4 EQ 96 THEN h1se4=.;
+28         
+29         
+30         /* make relative intelligence -1 (below), 0 (about average), +1 (high) */
+31         relativeIntelligence = 0;
+32         IF h1se4 LT 3 THEN relativeIntelligence = -1;
+33         ELSE IF h1se4 GT 4 THEN relativeIntelligence = +1;
+34         ELSE relativeIntelligence = 0;
+35         
+36         
+37         /* sort by intelligence */
+
+NOTE: There were 6504 observations read from the data set MYDATA.ADDHEALTH_PDS.
+NOTE: The data set WORK.NEW has 3356 observations and 66 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      user cpu time       0.06 seconds
+      system cpu time     0.01 seconds
+      memory              959.59k
+      OS Memory           15916.00k
+      Timestamp           05/01/2013 04:19:43 PM
+      Page Faults                       3
+      Page Reclaims                     0
+2                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+      Page Swaps                        0
+      Voluntary Context Switches        20
+      Involuntary Context Switches      5
+      Block Input Operations            3
+      Block Output Operations           0
+      
+38         PROC SORT; by h1se4;
+
+39         
+40         
+41         /* show intelligence quantiles */
+
+NOTE: There were 3356 observations read from the data set WORK.NEW.
+NOTE: The data set WORK.NEW has 3356 observations and 66 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              2835.82k
+      OS Memory           17972.00k
+      Timestamp           05/01/2013 04:19:43 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        15
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+      
+42         PROC FREQ; TABLES h1se4 relativeIntelligence;
+
+43         
+44         run;
+
+NOTE: There were 3356 observations read from the data set WORK.NEW.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.02 seconds
+      user cpu time       0.02 seconds
+      system cpu time     0.01 seconds
+      memory              1384.04k
+      OS Memory           16176.00k
+      Timestamp           05/01/2013 04:19:43 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        19
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+45         
+46         
+47         /* INTELLIGENCE FOR MEN */
+48         DATA new; set mydata.addhealth_pds;
+NOTE: Data file MYDATA.ADDHEALTH_PDS.DATA is in a format that is native to another host, or the file encoding does not match the 
+      session encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+3                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+49         
+50         LABEL 	h1se4 = "Intelligence distribution among men";
+51         
+52         /* ignore: */
+53         /* unknown sex (6) and female (2) */
+54         IF BIO_SEX EQ 1;
+55         /* intelligence refused (96) and unknown (98) data */
+56         IF h1se4 EQ 98 OR h1se4 EQ 96 THEN h1se4=.;
+57         
+58         
+59         /* make relative intelligence -1 (below), 0 (about average), +1 (high) */
+60         relativeIntelligence = 0;
+61         IF h1se4 LT 3 THEN relativeIntelligence = -1;
+62         ELSE IF h1se4 GT 4 THEN relativeIntelligence = +1;
+63         ELSE relativeIntelligence = 0;
+64         
+65         
+66         /* sort by intelligence */
+
+NOTE: There were 6504 observations read from the data set MYDATA.ADDHEALTH_PDS.
+NOTE: The data set WORK.NEW has 3147 observations and 66 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      user cpu time       0.06 seconds
+      system cpu time     0.01 seconds
+      memory              960.06k
+      OS Memory           16428.00k
+      Timestamp           05/01/2013 04:19:43 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        30
+      Involuntary Context Switches      2
+      Block Input Operations            0
+      Block Output Operations           0
+      
+67         PROC SORT; by h1se4;
+
+68         
+69         
+70         /* show intelligence quantiles */
+
+NOTE: There were 3147 observations read from the data set WORK.NEW.
+NOTE: The data set WORK.NEW has 3147 observations and 66 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              2834.79k
+      OS Memory           18740.00k
+      Timestamp           05/01/2013 04:19:43 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        13
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+4                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+      
+71         PROC FREQ; TABLES h1se4 relativeIntelligence;
+
+72         
+73         run;
+
+NOTE: There were 3147 observations read from the data set WORK.NEW.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.02 seconds
+      user cpu time       0.02 seconds
+      system cpu time     0.00 seconds
+      memory              832.39k
+      OS Memory           16688.00k
+      Timestamp           05/01/2013 04:19:43 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        19
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+74         
+75         
+76         
+77         GOPTIONS NOACCESSIBLE;
+78         %LET _CLIENTTASKLABEL=;
+79         %LET _CLIENTPROJECTPATH=;
+80         %LET _CLIENTPROJECTNAME=;
+81         %LET _SASPROGRAMFILE=;
+82         
+83         ;*';*";*/;quit;run;
+84         ODS _ALL_ CLOSE;
+85         
+86         
+87         QUIT; RUN;
+88         

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SASReport applicationName="ODS" applicationVersion="9.3" dateCreated="2013-05-01T21:30:47+02:00" dateModified="2013-05-01T21:33:00+02:00" version="1.2" xmlns:style="http://www.sas.com/sasreportmodel/styles" xmlns:ods="http://www.sas.com/sasreportmodel/ods">
+	<View style:scheme="Analysis" style:style="Body">
+		<PageSetup size="LETTER" height="11in" width="8.5in" orientation="PORTRAIT" marginLeft="1in" marginRight="1in" marginTop="1in" marginBottom="1in" startingNumber="1">
+			<PageHeader>
+				<Text style:textAlign="right">
+					<GriddedConstraint />
+					<Span><Date style:textAlign="right">2013-05-01T21:30:47+02:00</Date>   <PageNumber style:textAlign="right"></PageNumber></Span>
+				</Text>
+			</PageHeader>
+		</PageSetup>
+		<Section>
+			<Section name="ANOVA_1">
+				<PageSetup size="LETTER" height="11in" width="8.5in" orientation="PORTRAIT" marginLeft="1in" marginRight="1in" marginTop="1in" marginBottom="1in">
+				</PageSetup>
+				<Section style:pageBreakAfter="always">
+					<Header style:paddingBottom="10px">
+						<GriddedLayout rowGutter="10px" columnGutter="10px" />
+					</Header>
+					<Section>
+						<Header style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" columnGutter="10px" />
+							<Text style:style="proctitle" style:textAlign="center" style:verticalAlign="middle">
+								<GriddedConstraint />
+								<Span style:style="proctitle">The ANOVA Procedure</Span>
+<Br />							</Text>
+						</Header>
+						<Body style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" />
+							<Table cellPadding="3px" data="IDX" style:style="table" name="Data,Class Levels">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Columns order="specified">
+										<Label position="top" style:style="header" style:textAlign="center" style:verticalAlign="bottom">Class Level Information</Label>
+										<Column variable="Class" style:style="rowheader">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="left" style:verticalAlign="bottom">Class</Label>
+											<Cell style:style="rowheader" style:textAlign="left">
+											</Cell>
+										</Column>
+										<Column variable="Levels" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Levels</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+										<Column variable="Values" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="left" style:verticalAlign="bottom">Values</Label>
+											<Cell style:style="data" style:textAlign="left">
+											</Cell>
+										</Column>
+									</Columns>
+								</Columns>
+							</Table>
+							<Table cellPadding="3px" data="IDX1" style:style="table" name="Data,Number of Observations">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Column variable="Label" style:style="rowheader">
+										<Label isVisible="false" isStacked="false" position="top" style:style="headerempty" style:textAlign="left" style:verticalAlign="bottom"></Label>
+										<Cell style:style="rowheader" style:textAlign="left">
+										</Cell>
+									</Column>
+									<Column variable="N" style:style="data">
+										<Label isVisible="false" isStacked="false" position="top" style:style="headerempty" style:textAlign="right" style:verticalAlign="bottom"></Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+								</Columns>
+							</Table>
+						</Body>
+					</Section>
+				</Section>
+				<Section style:pageBreakAfter="always">
+					<Header style:paddingBottom="10px">
+						<GriddedLayout rowGutter="10px" columnGutter="10px" />
+					</Header>
+					<Section>
+						<Header style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" columnGutter="10px" />
+							<Text style:style="proctitle" style:textAlign="center" style:verticalAlign="middle">
+								<GriddedConstraint />
+								<Span style:style="proctitle">The ANOVA Procedure</Span>
+<Br /><Br />								<Span style:style="proctitle"></Span>
+<Br />							</Text>
+							<Text style:style="proctitle" style:textAlign="left" style:verticalAlign="middle">
+								<GriddedConstraint halign="left" />
+								<Span style:style="proctitle">Dependent Variable: H1SE4   Intelligence distribution</Span>
+<Br />							</Text>
+						</Header>
+						<Body style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" />
+							<Table cellPadding="3px" data="IDX2" style:style="table" name="Analysis of Variance,H1SE4,Overall ANOVA">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Column variable="Source" style:style="rowheader">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="left" style:verticalAlign="bottom">Source</Label>
+										<Cell style:style="rowheader" style:textAlign="left">
+										</Cell>
+									</Column>
+									<Column variable="DF" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">DF</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="SS" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Sum of Squares</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="MS" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Mean Square</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="FValue" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">F Value</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="ProbF" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Pr<NBSP />&gt;<NBSP />F</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+								</Columns>
+							</Table>
+							<Table cellPadding="3px" data="IDX3" style:style="table" name="Analysis of Variance,H1SE4,Fit Statistics">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Column variable="RSquare" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">R-Square</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="CV" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Coeff Var</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="RootMSE" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Root MSE</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="DepMean" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">H1SE4<NBSP />Mean</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+								</Columns>
+							</Table>
+							<Table cellPadding="3px" data="IDX4" style:style="table" name="Analysis of Variance,H1SE4,Anova Model ANOVA">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Column variable="Source" style:style="rowheader">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="left" style:verticalAlign="bottom">Source</Label>
+										<Cell style:style="rowheader" style:textAlign="left">
+										</Cell>
+									</Column>
+									<Column variable="DF" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">DF</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="SS" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Anova SS</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="MS" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Mean Square</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="FValue" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">F Value</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Column variable="ProbF" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Pr<NBSP />&gt;<NBSP />F</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+								</Columns>
+							</Table>
+						</Body>
+					</Section>
+				</Section>
+				<Section style:pageBreakAfter="always">
+					<Header style:paddingBottom="10px">
+						<GriddedLayout rowGutter="10px" columnGutter="10px" />
+					</Header>
+					<Section>
+						<Header style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" columnGutter="10px" />
+							<Text style:style="proctitle" style:textAlign="center" style:verticalAlign="middle">
+								<GriddedConstraint />
+								<Span style:style="proctitle">The ANOVA Procedure</Span>
+<Br />							</Text>
+						</Header>
+						<Body style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" />
+							<Table cellPadding="3px" data="IDX5" style:style="table" name="Means,BIO_SEX,Means">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Column variable="level" style:style="rowheader">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="left" style:verticalAlign="bottom">Level of<Br />BIO_SEX</Label>
+										<Cell style:style="rowheader" style:textAlign="left">
+										</Cell>
+									</Column>
+									<Column variable="N" style:style="data">
+										<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">N</Label>
+										<Cell style:style="data" style:textAlign="right">
+										</Cell>
+									</Column>
+									<Columns order="specified">
+										<Label position="top" style:style="header" style:textAlign="center" style:verticalAlign="bottom">H1SE4</Label>
+										<Column variable="mean" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Mean</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+										<Column variable="sd" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Std Dev</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+									</Columns>
+								</Columns>
+							</Table>
+						</Body>
+					</Section>
+				</Section>
+			</Section>
+			<Section name="Freq_1">
+				<PageSetup size="LETTER" height="11in" width="8.5in" orientation="PORTRAIT" marginLeft="1in" marginRight="1in" marginTop="1in" marginBottom="1in">
+				</PageSetup>
+				<Section style:pageBreakAfter="always">
+					<Header style:paddingBottom="10px">
+						<GriddedLayout rowGutter="10px" columnGutter="10px" />
+					</Header>
+					<Section>
+						<Header style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" columnGutter="10px" />
+							<Text style:style="proctitle" style:textAlign="center" style:verticalAlign="middle">
+								<GriddedConstraint />
+								<Span style:style="proctitle">The FREQ Procedure</Span>
+<Br />							</Text>
+						</Header>
+						<Body style:paddingBottom="10px">
+							<GriddedLayout rowGutter="10px" />
+							<Table cellPadding="3px" data="IDX6" style:style="table" name="Table H1SE4,One-Way Frequencies">
+								<GriddedConstraint />
+								<Columns order="specified">
+									<Columns order="specified">
+										<Label position="top" style:style="header" style:textAlign="center" style:verticalAlign="bottom">Intelligence distribution</Label>
+										<Column variable="FVariable" style:style="rowheader">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">H1SE4</Label>
+											<Cell style:style="rowheader" style:textAlign="right">
+											</Cell>
+										</Column>
+										<Column variable="Frequency" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Frequency</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+										<Column variable="Percent" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom"> Percent</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+										<Column variable="CumFrequency" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Cumulative<Br /> Frequency</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+										<Column variable="CumPercent" style:style="data">
+											<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Cumulative<Br />  Percent</Label>
+											<Cell style:style="data" style:textAlign="right">
+											</Cell>
+										</Column>
+									</Columns>
+								</Columns>
+							</Table>
+						</Body>
+						<Section>
+							<Header style:paddingBottom="10px">
+								<GriddedLayout rowGutter="10px" columnGutter="10px" />
+								<Text style:style="proctitle" style:textAlign="center" style:verticalAlign="middle" name="Table H1SE4,One-Way Frequencies">
+									<GriddedConstraint />
+									<Span style:style="proctitle">Frequency Missing = 29</Span>
+<Br />								</Text>
+							</Header>
+							<Body style:paddingBottom="10px">
+								<GriddedLayout rowGutter="10px" />
+								<Table cellPadding="3px" data="IDX7" style:style="table" name="Table BIO_SEX,One-Way Frequencies">
+									<GriddedConstraint />
+									<Columns order="specified">
+										<Columns order="specified">
+											<Label position="top" style:style="header" style:textAlign="center" style:verticalAlign="bottom">BIOLOGICAL SEX-W1</Label>
+											<Column variable="FVariable" style:style="rowheader">
+												<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">BIO_SEX</Label>
+												<Cell style:style="rowheader" style:textAlign="right">
+												</Cell>
+											</Column>
+											<Column variable="Frequency" style:style="data">
+												<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Frequency</Label>
+												<Cell style:style="data" style:textAlign="right">
+												</Cell>
+											</Column>
+											<Column variable="Percent" style:style="data">
+												<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom"> Percent</Label>
+												<Cell style:style="data" style:textAlign="right">
+												</Cell>
+											</Column>
+											<Column variable="CumFrequency" style:style="data">
+												<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Cumulative<Br /> Frequency</Label>
+												<Cell style:style="data" style:textAlign="right">
+												</Cell>
+											</Column>
+											<Column variable="CumPercent" style:style="data">
+												<Label isStacked="false" position="top" style:style="header" style:textAlign="right" style:verticalAlign="bottom">Cumulative<Br />  Percent</Label>
+												<Cell style:style="data" style:textAlign="right">
+												</Cell>
+											</Column>
+										</Columns>
+									</Columns>
+								</Table>
+							</Body>
+						</Section>
+					</Section>
+				</Section>
+			</Section>
+		</Section>
+	</View>
+	<Data refreshPolicy="embedded">
+		<IQData type="2DEmbedded" name="IDX">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="Class">
+					</Variable>
+					<Variable encoding="text" name="Levels">
+					</Variable>
+					<Variable encoding="text" name="Values">
+					</Variable>
+				</Variables>
+				<CSV>
+"BIO_SEX"<Value style:style="rowheader" />, "2", "1 2";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX1">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="Label">
+					</Variable>
+					<Variable encoding="text" name="N">
+					</Variable>
+				</Variables>
+				<CSV>
+"Number of Observations Read"<Value style:style="rowheader" />, "6503";
+"Number of Observations Used"<Value style:style="rowheader" />, "6474";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX2">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="Source">
+					</Variable>
+					<Variable encoding="text" name="DF">
+					</Variable>
+					<Variable encoding="text" name="SS">
+					</Variable>
+					<Variable encoding="text" name="MS">
+					</Variable>
+					<Variable encoding="text" name="FValue">
+					</Variable>
+					<Variable encoding="text" name="ProbF">
+					</Variable>
+				</Variables>
+				<CSV>
+"Model"<Value style:style="rowheader" />, "1", "0.036470", "0.036470", "0.03", "0.8618";
+"Error"<Value style:style="rowheader" />, "6472", "7789.618148", "1.203587", " ", " ";
+"Corrected Total"<Value style:style="rowheader" />, "6473", "7789.654618", " ", " ", " ";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX3">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="RSquare">
+					</Variable>
+					<Variable encoding="text" name="CV">
+					</Variable>
+					<Variable encoding="text" name="RootMSE">
+					</Variable>
+					<Variable encoding="text" name="DepMean">
+					</Variable>
+				</Variables>
+				<CSV>
+"0.000005", "28.30811", "1.097081", "3.875502";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX4">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="Source">
+					</Variable>
+					<Variable encoding="text" name="DF">
+					</Variable>
+					<Variable encoding="text" name="SS">
+					</Variable>
+					<Variable encoding="text" name="MS">
+					</Variable>
+					<Variable encoding="text" name="FValue">
+					</Variable>
+					<Variable encoding="text" name="ProbF">
+					</Variable>
+				</Variables>
+				<CSV>
+"BIO_SEX"<Value style:style="rowheader" />, "1", "0.03647029", "0.03647029", "0.03", "0.8618";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX5">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="level">
+					</Variable>
+					<Variable encoding="text" name="N">
+					</Variable>
+					<Variable encoding="text" name="mean">
+					</Variable>
+					<Variable encoding="text" name="sd">
+					</Variable>
+				</Variables>
+				<CSV>
+"1"<Value style:style="rowheader" />, "3130", "3.87795527", "1.11461698";
+"2"<Value style:style="rowheader" />, "3344", "3.87320574", "1.08041040";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX6">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="FVariable">
+					</Variable>
+					<Variable encoding="text" name="Frequency">
+					</Variable>
+					<Variable encoding="text" name="Percent">
+					</Variable>
+					<Variable encoding="text" name="CumFrequency">
+					</Variable>
+					<Variable encoding="text" name="CumPercent">
+					</Variable>
+				</Variables>
+				<CSV>
+"1"<Value style:style="rowheader" />, "77", "1.19", "77", "1.19";
+"2"<Value style:style="rowheader" />, "322", "4.97", "399", "6.16";
+"3"<Value style:style="rowheader" />, "2502", "38.65", "2901", "44.81";
+"4"<Value style:style="rowheader" />, "1420", "21.93", "4321", "66.74";
+"5"<Value style:style="rowheader" />, "1735", "26.80", "6056", "93.54";
+"6"<Value style:style="rowheader" />, "418", "6.46", "6474", "100.00";</CSV>
+			</EmbeddedData>
+		</IQData>
+		<IQData type="2DEmbedded" name="IDX7">
+			<EmbeddedData>
+				<Variables>
+					<Variable encoding="text" name="FVariable">
+					</Variable>
+					<Variable encoding="text" name="Frequency">
+					</Variable>
+					<Variable encoding="text" name="Percent">
+					</Variable>
+					<Variable encoding="text" name="CumFrequency">
+					</Variable>
+					<Variable encoding="text" name="CumPercent">
+					</Variable>
+				</Variables>
+				<CSV>
+"1"<Value style:style="rowheader" />, "3147", "48.39", "3147", "48.39";
+"2"<Value style:style="rowheader" />, "3356", "51.61", "6503", "100.00";</CSV>
+			</EmbeddedData>
+		</IQData>
+	</Data>
+	<style:CSSScheme file="Assignment6_files/Analysis.css" name="Analysis"></style:CSSScheme>
+</SASReport>

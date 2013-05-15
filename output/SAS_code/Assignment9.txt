@@ -1,0 +1,144 @@
+1                                                          The SAS System                                 21:03 Friday, May 10, 2013
+
+1          ;*';*";*/;quit;run;
+2          OPTIONS PAGENO=MIN;
+3          %LET _CLIENTTASKLABEL='Assignment9';
+4          %LET _CLIENTPROJECTPATH='D:\My Documents\Documents\PDS_AddHealth_Prj.egp';
+5          %LET _CLIENTPROJECTNAME='PDS_AddHealth_Prj.egp';
+6          %LET _SASPROGRAMFILE=;
+7          
+8          ODS _ALL_ CLOSE;
+9          OPTIONS DEV=ACTIVEX;
+10         GOPTIONS XPIXELS=0 YPIXELS=0;
+11         FILENAME EGSR TEMP;
+12         ODS tagsets.sasreport12(ID=EGSR) FILE=EGSR STYLE=Analysis
+12       ! STYLESHEET=(URL="file:///C:/Program%20Files%20(x86)/SAS/EnterpriseGuideAcademics/4.3/Styles/Analysis.css") NOGTITLE
+12       ! NOGFOOTNOTE GPATH=&sasworklocation ENCODING=UTF8 options(rolap="on");
+NOTE: Writing TAGSETS.SASREPORT12(EGSR) Body file: EGSR
+13         
+14         GOPTIONS ACCESSIBLE;
+15         libname mydata "/courses/u_coursera.org1/i_1006328/c_5333" access=readonly;
+NOTE: Libref MYDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /courses/u_coursera.org1/i_1006328/c_5333
+16         
+17         
+18         /* ethnics */
+19         DATA new; set mydata.addhealth_pds;
+NOTE: Data file MYDATA.ADDHEALTH_PDS.DATA is in a format that is native to another host, or the file encoding does not match the 
+      session encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+20         
+21         LABEL 	h1gi6b = "African Americans"
+22         		h1gi6c = "Native Americans"
+23         		h1gi6d = "Asian people";
+24         
+25         
+26         /* ignore: */
+27         /* unknown refused (6) and unknown (8) */
+28         IF h1gi6b NE 6 and h1gi6b NE 8;
+29         IF h1gi6c NE 6 and h1gi6c NE 8;
+30         IF h1gi6d NE 6 and h1gi6d NE 8;
+31         
+32         /* refused (6), no religion (7) and unknown (8) */
+33         IF h1re2 LT 6; /* word of God */
+34         IF h1re3 LT 6; /* attended services */
+35         
+36         /* only iff disagrees to sacred scriptures
+37         IF h1re2 EQ 2;*/
+38         /* only for African Americans */
+39         /* African American in favor of the idea of sacrificed symbols
+40         IF h1gi6b EQ 1 AND h1re2 LT 3;*/
+41         
+42         /* whole population against
+43         IF h1re2 LT 3;*/
+44         
+45         /* sort by intelligence */
+
+NOTE: There were 6504 observations read from the data set MYDATA.ADDHEALTH_PDS.
+NOTE: The data set WORK.NEW has 5350 observations and 65 variables.
+NOTE: DATA statement used (Total process time):
+2                                                          The SAS System                                 21:03 Friday, May 10, 2013
+
+      real time           0.13 seconds
+      user cpu time       0.06 seconds
+      system cpu time     0.02 seconds
+      memory              968.98k
+      OS Memory           15404.00k
+      Timestamp           05/10/2013 09:53:40 PM
+      Page Faults                       3
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        40
+      Involuntary Context Switches      1
+      Block Input Operations            3
+      Block Output Operations           0
+      
+46         PROC SORT; by h1re4;
+
+47         
+
+NOTE: There were 5350 observations read from the data set WORK.NEW.
+NOTE: The data set WORK.NEW has 5350 observations and 65 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              3881.93k
+      OS Memory           19764.00k
+      Timestamp           05/10/2013 09:53:40 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        10
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+48         PROC ANOVA; CLASS h1re3;
+
+49         MODEL h1re2=h1re3;
+50         MEANS h1re3; by h1re4;
+51         
+52         /*PROC CORR; VAR h1re2 h1re3;*/
+53         
+54         /*PROC FREQ; TABLES h1re2*h1re3 /CHISQ;*/
+55         
+56         run;
+
+NOTE: Interactivity disabled with BY processing.
+NOTE: The CLASS variable H1RE3 has only one level: '3'.
+NOTE: The above message was for the following BY group:
+      S37Q4 HOW IMPORTANT IS RELIGION-W1=6
+NOTE: PROCEDURE ANOVA used (Total process time):
+      real time           0.21 seconds
+      user cpu time       0.17 seconds
+      system cpu time     0.02 seconds
+      memory              2407.25k
+      OS Memory           16440.00k
+      Timestamp           05/10/2013 09:53:41 PM
+      Page Faults                       0
+3                                                          The SAS System                                 21:03 Friday, May 10, 2013
+
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        60
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+57         
+58         
+59         GOPTIONS NOACCESSIBLE;
+60         %LET _CLIENTTASKLABEL=;
+61         %LET _CLIENTPROJECTPATH=;
+62         %LET _CLIENTPROJECTNAME=;
+63         %LET _SASPROGRAMFILE=;
+64         
+65         ;*';*";*/;quit;run;
+66         ODS _ALL_ CLOSE;
+67         
+68         
+69         QUIT; RUN;
+70         

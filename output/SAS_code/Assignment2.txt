@@ -1,0 +1,207 @@
+1                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+1          ;*';*";*/;quit;run;
+2          OPTIONS PAGENO=MIN;
+3          %LET _CLIENTTASKLABEL='Program';
+4          %LET _CLIENTPROJECTPATH='D:\My Documents\Documents\PDS_AddHealth_Prj.egp';
+5          %LET _CLIENTPROJECTNAME='PDS_AddHealth_Prj.egp';
+6          %LET _SASPROGRAMFILE=;
+7          
+8          ODS _ALL_ CLOSE;
+9          OPTIONS DEV=ACTIVEX;
+10         GOPTIONS XPIXELS=0 YPIXELS=0;
+11         FILENAME EGSR TEMP;
+12         ODS tagsets.sasreport12(ID=EGSR) FILE=EGSR STYLE=Analysis
+12       ! STYLESHEET=(URL="file:///C:/Program%20Files%20(x86)/SAS/EnterpriseGuideAcademics/4.3/Styles/Analysis.css") NOGTITLE
+12       ! NOGFOOTNOTE GPATH=&sasworklocation ENCODING=UTF8 options(rolap="on");
+NOTE: Writing TAGSETS.SASREPORT12(EGSR) Body file: EGSR
+13         
+14         GOPTIONS ACCESSIBLE;
+15         libname mydata "/courses/u_coursera.org1/i_1006328/c_5333" access=readonly;
+NOTE: Libref MYDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /courses/u_coursera.org1/i_1006328/c_5333
+16         
+17         
+18         /* INTELLIGENCE FOR WOMEN */
+19         DATA new; set mydata.addhealth_pds;
+NOTE: Data file MYDATA.ADDHEALTH_PDS.DATA is in a format that is native to another host, or the file encoding does not match the 
+      session encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+20         
+21         LABEL 	h1se4 = "Intelligence distribution among women";
+22         
+23         /* ignore: */
+24         /* unknown sex (6) and male (1) */
+25         IF BIO_SEX EQ 2;
+26         /* intelligence refused (96) and unknown (98) data */
+27         IF h1se4 EQ 98 OR h1se4 EQ 96 THEN h1se4=.;
+28         
+29         
+30         
+31         /* sort by intelligence */
+
+NOTE: There were 6504 observations read from the data set MYDATA.ADDHEALTH_PDS.
+NOTE: The data set WORK.NEW has 3356 observations and 65 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      user cpu time       0.06 seconds
+      system cpu time     0.01 seconds
+      memory              956.07k
+      OS Memory           14892.00k
+      Timestamp           05/01/2013 04:03:01 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        16
+      Involuntary Context Switches      5
+      Block Input Operations            0
+      Block Output Operations           0
+      
+2                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+32         PROC SORT; by h1se4;
+
+33         
+34         
+35         /* show intelligence quantiles */
+
+NOTE: There were 3356 observations read from the data set WORK.NEW.
+NOTE: The data set WORK.NEW has 3356 observations and 65 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              2838.48k
+      OS Memory           17460.00k
+      Timestamp           05/01/2013 04:03:01 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        21
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+36         PROC FREQ; TABLES h1se4;
+
+37         
+38         run;
+
+NOTE: There were 3356 observations read from the data set WORK.NEW.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.02 seconds
+      user cpu time       0.02 seconds
+      system cpu time     0.01 seconds
+      memory              1312.29k
+      OS Memory           15408.00k
+      Timestamp           05/01/2013 04:03:01 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        18
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+39         
+40         
+41         /* INTELLIGENCE FOR MEN */
+42         DATA new; set mydata.addhealth_pds;
+NOTE: Data file MYDATA.ADDHEALTH_PDS.DATA is in a format that is native to another host, or the file encoding does not match the 
+      session encoding. Cross Environment Data Access will be used, which might require additional CPU resources and might reduce 
+      performance.
+43         
+44         LABEL 	h1se4 = "Intelligence distribution among men";
+45         
+46         
+47         /* ignore: */
+48         /* unknown sex (6) and female (2) */
+3                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+49         IF BIO_SEX EQ 1;
+50         /* intelligence refused (96) and unknown (98) data */
+51         IF h1se4 EQ 98 OR h1se4 EQ 96 THEN h1se4=.;
+52         
+53         /* sort by intelligence */
+
+NOTE: There were 6504 observations read from the data set MYDATA.ADDHEALTH_PDS.
+NOTE: The data set WORK.NEW has 3147 observations and 65 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      user cpu time       0.06 seconds
+      system cpu time     0.01 seconds
+      memory              956.03k
+      OS Memory           15660.00k
+      Timestamp           05/01/2013 04:03:02 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        30
+      Involuntary Context Switches      1
+      Block Input Operations            0
+      Block Output Operations           0
+      
+54         PROC SORT; by h1se4;
+
+55         
+56         
+57         /* show intelligence quantiles */
+
+NOTE: There were 3147 observations read from the data set WORK.NEW.
+NOTE: The data set WORK.NEW has 3147 observations and 65 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.01 seconds
+      memory              2709.84k
+      OS Memory           17716.00k
+      Timestamp           05/01/2013 04:03:02 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        10
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+58         PROC FREQ; TABLES h1se4;
+
+59         
+60         run;
+
+NOTE: There were 3147 observations read from the data set WORK.NEW.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.02 seconds
+      user cpu time       0.01 seconds
+      system cpu time     0.00 seconds
+      memory              753.73k
+      OS Memory           16176.00k
+4                                                          The SAS System                               15:59 Wednesday, May 1, 2013
+
+      Timestamp           05/01/2013 04:03:02 PM
+      Page Faults                       0
+      Page Reclaims                     0
+      Page Swaps                        0
+      Voluntary Context Switches        21
+      Involuntary Context Switches      0
+      Block Input Operations            0
+      Block Output Operations           0
+      
+
+61         
+62         
+63         
+64         GOPTIONS NOACCESSIBLE;
+65         %LET _CLIENTTASKLABEL=;
+66         %LET _CLIENTPROJECTPATH=;
+67         %LET _CLIENTPROJECTNAME=;
+68         %LET _SASPROGRAMFILE=;
+69         
+70         ;*';*";*/;quit;run;
+71         ODS _ALL_ CLOSE;
+72         
+73         
+74         QUIT; RUN;
+75         

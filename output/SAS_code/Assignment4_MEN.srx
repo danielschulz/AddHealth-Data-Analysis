@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SASReport applicationName="ODS" applicationVersion="9.3" dateCreated="2013-05-01T16:35:12+02:00" dateModified="2013-05-01T16:35:33+02:00" version="1.2" xmlns:style="http://www.sas.com/sasreportmodel/styles" xmlns:ods="http://www.sas.com/sasreportmodel/ods">
+	<View style:scheme="Analysis" style:style="Body">
+		<PageSetup size="LETTER" height="11in" width="8.5in" orientation="PORTRAIT" marginLeft="1in" marginRight="1in" marginTop="1in" marginBottom="1in" startingNumber="1">
+			<PageHeader>
+				<Text style:textAlign="right">
+					<GriddedConstraint />
+					<Span><Date style:textAlign="right">2013-05-01T16:35:12+02:00</Date>   <PageNumber style:textAlign="right"></PageNumber></Span>
+				</Text>
+			</PageHeader>
+		</PageSetup>
+		<Section>
+			<Section name="Gchart_1">
+				<PageSetup size="LETTER" height="11in" width="8.5in" orientation="PORTRAIT" marginLeft="1in" marginRight="1in" marginTop="1in" marginBottom="1in">
+				</PageSetup>
+				<Section style:pageBreakAfter="always">
+					<Header style:paddingBottom="10px">
+						<GriddedLayout rowGutter="10px" columnGutter="10px" />
+						<Text style:style="systemtitle" style:textAlign="center" style:verticalAlign="middle">
+							<GriddedConstraint column="1" />
+							<Span style:style="systemtitle" style:textAlign="center">Relative intelligence group frequencies among men</Span>
+						</Text>
+					</Header>
+					<Body style:paddingBottom="10px">
+						<GriddedLayout rowGutter="10px" />
+						<Graph view2D="true" usePlotContrast="true" data="GraphDataIDX" style:scheme="GraphStyleScheme" style:style="GraphSchemeIDX" style:height="480px" style:width="640px" name="Bar chart of relativeIntelligence">
+							<GriddedConstraint />
+							<ChartDataList>
+								<ChartData data="GraphDataIDX" name="ChartData0">
+									<Roles>
+										<Role variable="relativeIntelligence1" type="Category" sortOrder="Ascending" statistic="Frequency">
+											<Categorization type="Discrete">
+											</Categorization>
+										</Role>
+										<Role variable="__FREQ__14" type="Frequency">
+										</Role>
+									</Roles>
+								</ChartData>
+							</ChartDataList>
+							<ChartAreas>
+								<ChartArea orientation="Horizontal">
+									<Walls>
+									</Walls>
+									<ChartBorderLine lineStyle="Solid" lineVisible="true">
+									</ChartBorderLine>
+									<Charts>
+										<Bar name="Chart0" chartData="ChartData0" barShape="Block" labelStatistic="Percentage" styleBy="Category">
+											<Labels textVisible="true"></Labels>
+											<Outline lineColor="CX000000" lineVisible="true">
+											</Outline>
+										</Bar>
+									</Charts>
+									<Axes>
+										<Axis name="Axis0" role="Category" logarithmicPowerVisible="false" minorTickCount="0" majorTickCount="3" reverseAxis="true">
+											<AxisValues textVisible="true"></AxisValues>
+											<Label textVisible="true">relative Intelligence group</Label>
+											<MajorTick lineVisible="false">
+											</MajorTick>
+											<MinorTick lineVisible="false">
+											</MinorTick>
+										</Axis>
+										<Axis name="Axis1" role="Response" logarithmicPowerVisible="false" minorTickCount="1" appendLabelStatistic="true">
+											<AxisValues textVisible="true"></AxisValues>
+											<Label textVisible="true">frequency</Label>
+										</Axis>
+									</Axes>
+								</ChartArea>
+							</ChartAreas>
+							<Legends>
+								<Legend chart="Chart0" isVisible="false">
+								</Legend>
+							</Legends>
+						</Graph>
+					</Body>
+					<Footer style:style="systemfooter" style:paddingBottom="10px" style:textAlign="center">
+						<GriddedLayout rowGutter="10px" columnGutter="10px" />
+						<Text style:style="systemfooter" style:textAlign="center" style:verticalAlign="middle">
+							<GriddedConstraint column="1" />
+							<Span style:style="systemfooter" style:textAlign="center">Zero (0) is about average, plus one (+1) is higher and minus one (-1) is below the population´s average. The image shows the most populated group being average and higher than average men. Just a tip of the eisberg is below it.</Span>
+						</Text>
+					</Footer>
+				</Section>
+			</Section>
+		</Section>
+	</View>
+	<Data refreshPolicy="embedded">
+		<IQData type="2DEmbedded" name="GraphDataIDX">
+			<EmbeddedData>
+				<Variables>
+					<Variable label="relativeIntelligence" type="Numeric" name="relativeIntelligence1">
+					</Variable>
+					<Variable label="Frequency" type="Numeric" name="__FREQ__14">
+					</Variable>
+				</Variables>
+				<ValuesList>
+					<Values>
+						<Value>-1</Value>
+						<Value>239</Value>
+					</Values>
+					<Values>
+						<Value>0</Value>
+						<Value>1864</Value>
+					</Values>
+					<Values>
+						<Value>1</Value>
+						<Value>1044</Value>
+					</Values>
+				</ValuesList>
+			</EmbeddedData>
+		</IQData>
+	</Data>
+	<style:Scheme name="GraphStyleScheme">
+		<style:Style name="GraphSchemeIDX">
+			<style:Style context="GraphDataStyle1" markerSymbol="circle" lineStyle="Solid" fillType="Pattern" altColor="#678D67" color="#8FB38F" />
+			<style:Style context="GraphDataStyle2" markerSymbol="plus" lineStyle="Dash3" fillType="Pattern" altColor="#D18000" color="#F2AE49" />
+			<style:Style context="GraphDataStyle3" markerSymbol="X" lineStyle="Dash3Dash1" fillType="Pattern" altColor="#A08A5D" color="#B49C6A" />
+			<style:Style context="GraphDataStyle4" markerSymbol="triangle" lineStyle="Dash4" fillType="Pattern" altColor="#B3C54D" color="#CBD786" />
+			<style:Style context="GraphDataStyle5" markerSymbol="square" lineStyle="Dash3Dash1Dash1" fillType="Pattern" altColor="#8E6C93" color="#A47DAA" />
+			<style:Style context="GraphDataStyle6" markerSymbol="asterisk" lineStyle="Dash4Dash2" fillType="Pattern" altColor="#A5BDD7" color="#BDD5EF" />
+			<style:Style context="GraphDataStyle7" markerSymbol="diamond" lineStyle="Dash4Dash1Dash1" fillType="Pattern" altColor="#BEB794" color="#D9D2AD" />
+			<style:Style context="GraphDataStyle8" lineStyle="Dash2Space" fillType="Pattern" altColor="#6882A8" color="#8AA4C9" />
+			<style:Style context="GraphDataStyle9" lineStyle="Dash3Dot1" fillType="Pattern" altColor="#E6DA9E" color="#FAEEAF" />
+			<style:Style context="GraphDataStyle10" lineStyle="Dash3Dot2" fillType="Pattern" altColor="#699AA1" color="#98C7CE" />
+			<style:Style context="GraphDataStyle11" lineStyle="Dash1" fillType="Pattern" altColor="#746644" color="#8A7A53" />
+			<style:Style context="GraphDataStyle12" fillType="Pattern" altColor="#868686" color="#A4A4A3" />
+			<style:Style context="TwoColorRamp" fillGradientStartColor="#FDFBF3" fillGradientEndColor="#6EA16E" />
+			<style:Style context="TwoColorAltRamp" fillGradientStartColor="#FFFFD4" fillGradientEndColor="#D18000" />
+			<style:Style context="ThreeColorRamp" fillGradientStartColor="#FDFBF3" fillGradientNeutralColor="#B4CBAA" fillGradientEndColor="#6EA16E" />
+			<style:Style context="ThreeColorAltRamp" fillGradientStartColor="#D18000" fillGradientNeutralColor="#C8C1AE" fillGradientEndColor="#3D793D" />
+			<style:Style context="BackFill" fillColor="#FDFBF3" fillType="Pattern" />
+			<style:Style context="AxisLines" lineStyle="Solid" lineColor="#4F493B" lineThickness="1px" />
+			<style:Style context="GridLines" lineStyle="Solid" lineColor="#EFEDDD" lineThickness="1px" />
+			<style:Style context="ReferenceLines" lineStyle="Solid" lineColor="#A5A5A5" lineThickness="1px" />
+			<style:Style context="Outlines" lineStyle="Solid" lineColor="#000000" lineThickness="1px" />
+			<style:Style context="BorderLines" lineStyle="Solid" lineColor="#4F493B" lineThickness="1px" />
+			<style:Style context="TitleText" fontWeight="bold" textColor="#000000" fontFamily="Arial, Albany AMT, sans-serif" fontSize="11pt" fontStyle="normal" />
+			<style:Style context="FootnoteText" fontWeight="normal" textColor="#000000" fontFamily="Arial, Albany AMT, sans-serif" fontSize="10pt" fontStyle="italic" />
+			<style:Style context="LabelText" fontWeight="bold" textColor="#000000" fontFamily="Arial, Albany AMT, sans-serif" fontSize="10pt" fontStyle="normal" />
+			<style:Style context="ValueText" fontWeight="normal" textColor="#000000" fontFamily="Arial, Albany AMT, sans-serif" fontSize="9pt" fontStyle="normal" />
+			<style:Style context="DataText" fontWeight="normal" textColor="#000000" fontFamily="Arial, Albany AMT, sans-serif" fontSize="7pt" fontStyle="normal" />
+			<style:Style context="WallFill" fillColor="#FFFFFF" fillType="Pattern" />
+			<style:Style context="FloorFill" fillColor="#E4E4E4" fillType="Pattern" />
+			<style:Style context="LegendFill" fillColor="#FFFFFF" fillType="Pattern" />
+			<style:Style context="DropShadow" xOffset="5%" yOffset="5%" shadowColor="#B4B4B4" />
+		</style:Style>
+	</style:Scheme>
+	<style:CSSScheme file="Assignment4_MEN_files/Analysis.css" name="Analysis"></style:CSSScheme>
+</SASReport>
