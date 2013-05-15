@@ -84,11 +84,32 @@ dontknows$MORE_THAN_ONE_UNCLEAR = ifelse (dontknows$dontknowing > 1, TRUE, dontk
 
 dontknows$CHRISTIAN = "other"
 dontknows$CHRISTIAN = ifelse (CHRISTIAN_RELIGION_KEEPER(dontknows), "christians", dontknows$CHRISTIAN)
+dontknows$CHRISTIAN = factor(dontknows$CHRISTIAN)
 
 table = table("didn´t knew 40%+"=dontknows$MORE_THAN_ONE_UNCLEAR, "religious Group"=dontknows$CHRISTIAN)
 table
 
 chisq.test(table)
+
+
+dontknows$impOfReligionGroup = NA
+dontknows$impOfReligionGroup = ifelse (1 == dontknows$impOfReligion, "1-very", dontknows$impOfReligionGroup)
+dontknows$impOfReligionGroup = ifelse (2 == dontknows$impOfReligion, "2-fairly", dontknows$impOfReligionGroup)
+dontknows$impOfReligionGroup = ifelse (3 == dontknows$impOfReligion | 4 == dontknows$impOfReligion, "3-not", dontknows$impOfReligionGroup)
+dontknows$impOfReligionGroup = factor(dontknows$impOfReligionGroup)
+
+table = table(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$impOfReligionGroup)
+table
+
+chisq.test(table)
+
+# pairwise.t.test(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$impOfReligionGroup, p.adjust.method="holm")
+dontknows$impOfReligionGroup = factor(dontknows$impOfReligionGroup)
+taov = aov(dontknows$MORE_THAN_ONE_UNCLEAR ~ dontknows$impOfReligionGroup)
+tukey = TukeyHSD(taov)
+tukey
+
+rm(list=c("taov", "table"))
 #
 
 
