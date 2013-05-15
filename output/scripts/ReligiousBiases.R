@@ -126,11 +126,19 @@ tukey
 
 dontknows$attendedServices = factor(dontknows$attendedServices)
 dontknows$attendedYouthActivities = factor(dontknows$attendedYouthActivities)
+<<<<<<< HEAD
 
 t = table(dontknows$attendedServices, dontknows$race)
 t
 
 
+=======
+
+t = table(dontknows$attendedServices, dontknows$race)
+t
+
+
+>>>>>>> d4079a76cd95a5acd99965a316b0e805032beac8
 pairwise.t.test(dontknows$prayingFreq, dontknows$impOfReligionGroup, p.adjust.method="holm")
 taov = aov(dontknows$prayingFreq ~ dontknows$impOfReligionGroup)
 tukey = TukeyHSD(taov)
@@ -151,6 +159,7 @@ data$native = factor(data$native)
 data$pacific = factor(data$pacific)
 
 
+<<<<<<< HEAD
 aovWI = aov(data$attendedServices ~ data$figuresAreSacre + data$impOfReligion + data$prayingFreq + data$attendedYouthActivities)
 # aovWO = aov(data$attendedServices ~ data$figuresAreSacre + data$impOfReligion + data$prayingFreq + data$white + data$african + data$native + data$pacific)
 
@@ -168,12 +177,27 @@ aovWI = aov(data$attendedYouthActivities ~ data$figuresAreSacre + data$impOfReli
 summary(aovWI)
 # tukey = TukeyHSD(aovWI)
 # tukey
+=======
+aovWI = aov(data$attendedServices ~ data$figuresAreSacre + data$impOfReligion + data$prayingFreq)
+aovWO = aov(data$attendedServices ~ data$figuresAreSacre + data$impOfReligion + data$prayingFreq + data$white + data$african + data$native + data$pacific)
+
+summary(aovWI)
+summary(aovWO)
+
+tukey = TukeyHSD(aovWI)
+tukey
+
+tukey = TukeyHSD(aovWO)
+tukey
+
+>>>>>>> d4079a76cd95a5acd99965a316b0e805032beac8
 
 
 # anova  = aov(data$attendedServices ~ data$white + data$african + data$native + data$pacific)
 # tukey = TukeyHSD(anova)
 # tukey
 
+<<<<<<< HEAD
 
 sacrificial = subset(data$attendedServices, data$figuresAreSacre == 1)
 notSacrificial = subset(data$attendedServices, data$figuresAreSacre == 2)
@@ -187,6 +211,8 @@ hist(notSacrificial,
      xlab = "Frequency of attendance", ylab = "Frequency of paricipating people",
      sub = "")
 
+=======
+>>>>>>> d4079a76cd95a5acd99965a316b0e805032beac8
 #
 
 
