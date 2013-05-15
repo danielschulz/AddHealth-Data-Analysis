@@ -86,7 +86,7 @@ dontknows$CHRISTIAN = "other"
 dontknows$CHRISTIAN = ifelse (CHRISTIAN_RELIGION_KEEPER(dontknows), "christians", dontknows$CHRISTIAN)
 dontknows$CHRISTIAN = factor(dontknows$CHRISTIAN)
 
-table = table("didn´t knew 40%+"=dontknows$MORE_THAN_ONE_UNCLEAR, "religious Group"=dontknows$CHRISTIAN)
+table = table("didn´t knew 40%+"=dontknows$MORE_THAN_ONE_UNCLEAR, "religious group"=dontknows$CHRISTIAN)
 table
 
 chisq.test(table)
@@ -96,22 +96,80 @@ dontknows$impOfReligionGroup = NA
 dontknows$impOfReligionGroup = ifelse (1 == dontknows$impOfReligion, "1-very", dontknows$impOfReligionGroup)
 dontknows$impOfReligionGroup = ifelse (2 == dontknows$impOfReligion, "2-fairly", dontknows$impOfReligionGroup)
 dontknows$impOfReligionGroup = ifelse (3 == dontknows$impOfReligion | 4 == dontknows$impOfReligion, "3-not", dontknows$impOfReligionGroup)
+# dontknows$impOfReligionGroup = ifelse (3 == dontknows$impOfReligion, "3-ratherNot", dontknows$impOfReligionGroup)
+# dontknows$impOfReligionGroup = ifelse (4 == dontknows$impOfReligion, "4-not", dontknows$impOfReligionGroup)
 dontknows$impOfReligionGroup = factor(dontknows$impOfReligionGroup)
 
-table = table(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$impOfReligionGroup)
+table = table("didn´t knew 40%+"=dontknows$MORE_THAN_ONE_UNCLEAR, "importance group"=dontknows$impOfReligionGroup)
 table
 
 chisq.test(table)
 
-# pairwise.t.test(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$impOfReligionGroup, p.adjust.method="holm")
-# taov = aov(dontknows$MORE_THAN_ONE_UNCLEAR ~ dontknows$impOfReligionGroup)
-# tukey = TukeyHSD(taov)
-# tukey
+pairwise.t.test(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$impOfReligionGroup, p.adjust.method="holm")
+taov = aov(dontknows$MORE_THAN_ONE_UNCLEAR ~ dontknows$impOfReligionGroup)
+tukey = TukeyHSD(taov)
+tukey
 
-# rm(list=c("taov", "table"))
+
+dontknows$race = "unknown"
+dontknows$race = ifelse (1 == dontknows$white, "white", dontknows$race)
+dontknows$race = ifelse (1 == dontknows$african, "african", dontknows$race)
+dontknows$race = ifelse (1 == dontknows$native, "nativ", dontknows$race)
+dontknows$race = ifelse (1 == dontknows$pacific, "pacific", dontknows$race)
+dontknows$race = factor(dontknows$race)
+
+pairwise.t.test(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$race, p.adjust.method="holm")
+taov = aov(dontknows$MORE_THAN_ONE_UNCLEAR ~ dontknows$impOfReligionGroup)
+tukey = TukeyHSD(taov)
+tukey
+
+
+dontknows$attendedServices = factor(dontknows$attendedServices)
+dontknows$attendedYouthActivities = factor(dontknows$attendedYouthActivities)
+
+t = table(dontknows$attendedServices, dontknows$race)
+t
+
+
+pairwise.t.test(dontknows$prayingFreq, dontknows$impOfReligionGroup, p.adjust.method="holm")
+taov = aov(dontknows$prayingFreq ~ dontknows$impOfReligionGroup)
+tukey = TukeyHSD(taov)
+tukey
+
+rm(list=c("taov", "table"))
 #
 
 
+data$figuresAreSacre = factor(data$figuresAreSacre)
+data$impOfReligion = factor(data$impOfReligion)
+data$prayingFreq = factor(data$prayingFreq)
+
+
+data$white = factor(data$white)
+data$african = factor(data$african)
+data$native = factor(data$native)
+data$pacific = factor(data$pacific)
+
+
+aovWI = aov(data$attendedServices ~ data$figuresAreSacre + data$impOfReligion + data$prayingFreq)
+aovWO = aov(data$attendedServices ~ data$figuresAreSacre + data$impOfReligion + data$prayingFreq + data$white + data$african + data$native + data$pacific)
+
+summary(aovWI)
+summary(aovWO)
+
+tukey = TukeyHSD(aovWI)
+tukey
+
+tukey = TukeyHSD(aovWO)
+tukey
+
+
+
+# anova  = aov(data$attendedServices ~ data$white + data$african + data$native + data$pacific)
+# tukey = TukeyHSD(anova)
+# tukey
+
+#
 
 
 # MULTI_RACE_FORMULA = rawData$white + rawData$african + rawData$native + rawData$pacific > 1
