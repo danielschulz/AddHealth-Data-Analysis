@@ -104,12 +104,11 @@ table
 chisq.test(table)
 
 # pairwise.t.test(dontknows$MORE_THAN_ONE_UNCLEAR, dontknows$impOfReligionGroup, p.adjust.method="holm")
-dontknows$impOfReligionGroup = factor(dontknows$impOfReligionGroup)
-taov = aov(dontknows$MORE_THAN_ONE_UNCLEAR ~ dontknows$impOfReligionGroup)
-tukey = TukeyHSD(taov)
-tukey
+# taov = aov(dontknows$MORE_THAN_ONE_UNCLEAR ~ dontknows$impOfReligionGroup)
+# tukey = TukeyHSD(taov)
+# tukey
 
-rm(list=c("taov", "table"))
+# rm(list=c("taov", "table"))
 #
 
 
