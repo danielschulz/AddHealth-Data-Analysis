@@ -1,0 +1,81 @@
+Main influencers in active practice of religion
+
+Gist: I want to point out to what extend are the differences in people’s religious behavior universal and what traits can be assigned to a specific culture or belief within this religion.
+Introduction
+
+Maybe you know this from observation, from members of your family, or friends: even though they are a religious person they do not attend every single service, do not pray every day, or may agree the religious figures as are sacrificial.
+
+In this blog I want to figure out which traits from this behavior are human and what influences people the most to attend religious services. The studies coming nearest to my research question is what religion is associated with in terms of college attendance, health and wealth. As far as I know there´s no research dealing with influencers of attendance in church. So I give it a try and derive some findings from the AddHealth data set. To generate the data set there´s a survey that systematically asks for your habits and religious views. Our data sample is just a tiny fraction off the available information about the subjects.
+
+The data provide information on the idea of sacrificial figures and your religious habits. To figure out what is most associated with high attendance rates in services we will go through these and look for hidden patterns.
+Predictors of service attendances
+
+The survey asked people for several things: how often do you attend services or youth services in your community, how often do you pray, do you think religious figures from your religion are sacrificial, do you think of yourself as a reincarnated person, and how important is your religion to you?
+
+Even though the people were asked how important their religion is; let´s assume the act of attending in services being our measure of compliance. So we will look whether we can predict the attendance in services using the residual features.
+
+First of all let´s look if there´s any biases. After doing an Analysis of Variance (ANOVA) they´re all doing well predicting the attendance in services. It turns out every single feature is highly statistical significant.
+
+
+The question whether they think of their-selves as reincarnated is weakest (9*10^(-10)) — but all the p-values of all features are approximately zero (2*10^(-16)).
+
+image
+
+Let´s dig any deeper: from all the answers that the responded ´I don´t know´ — is there any bias to tell religions apart from each other?
+
+The data set were made up with a major count of Christian religions. I want to define Christians here as Baptists, members of the Christian Church, and members of the Catholic Church as well. All other instances are either in ´another´ religion or do not have a religion. There are 3393 Christians, 1870 other religions, and 751 people having no religion.
+
+Please keep in mind: originally there were 6504 instances in the data. After sorting out all ´refused´ and ´don´t know´ values there are still 6014 instances left. Note that legitimate skips were kept within the 6014 people as well because and not applicable question is a valid result.
+Moderating variable
+
+Let´s look at the attendance in religious services. As we look at the people saying ´religious figures are sacrificial´ the attendance in services is very high: the people agreeing to that are likely to attend services on a weekly basis.
+
+In contrast people who do disagree with that are much more likely to attend to their services in less than a month.
+
+image
+
+Legend:
+1: once a week; 2: at least once a month;
+3: less than once a month; 4: never
+
+image
+
+Legend:
+1: once a week; 2: at least once a month;
+3: less than once a month; 4: never
+
+
+So the question ´do you believe your religious figures are sacrificial?´ may change the behavior of them attending services on a regular basis.
+What they don´t know
+
+As people without any religion do not answer their practical habits in this there are still Christians and other religions left. Let´s forget the question about reincarnation. All the other features we deal with have to do with basics in their every day life in their religion. We focus on all their answers the didn´t knew an answer to and than look whether is can be associated or disassociated with Christians. Because these questions are so basic any body should know an answer to it. Our null hypothesis is that there is no religious bias in forgetting more than one answer. This is at least 40%.
+
+Please note: in preprocessing the data we filtered this feature out. Just for this analysis step the feature was taken in again.
+
+Now we take a table for the count people forgot one or more than one daily habit and compare this to their religious group.
+
+image
+
+After doing the Chisqure test it turns out there is no bias. The minor difference is completely based on the test sample. So we do not reject the null hypothesis. There is really no bias in religion as the p-value is one.
+
+So the difference not knowing at least two answers does not come from your religion. But might it be associated with how important do you think religion is to you?
+
+image
+
+Doing the Chisquare test on this basis there´s just a 3% chance the outcome is biased towards this data drawn. And this means this is a significant finding.
+
+When doing the Holm adjustment it turns out there is only a significance towards not reminding the answer when taking your religion very serious or fairly serious. image
+
+Interestingly: when dividing importance of religion into ´not at all´ and ´fairly not´ the adjustments make the p-values become far too big to be significant.
+Technical means
+
+I worked out some steps using the SAS Enterprise Guide. But to make up graphics and cleaning the data I found R more helpful. The git project contains the SAS and R sources as well.
+Bottom line
+
+In the end we can tell there is no bias in ethnics: Native Americans, African Americans, Pacific Americans, Islanders, and white Americans do practice religion the same way. To predict the attendance in services it is best to look at their attitude towards their religion. The best predictors for attendance in services is the attendance in youth activities, the amount of prayers a day, the personal importance of their religion, and their attitude towards the idea of sacrificial religious figures. And keep in mind that the last question determines the impact of attendance in religious services.
+Resources
+
+    AddHealth data set
+    R code
+    The complete project with R and SAS sources
+
